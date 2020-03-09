@@ -1,0 +1,17 @@
+.logo {
+  margin: 0 auto;
+  font-size: 100%;
+  text-align: center;
+  align-self: center;
+  text-decoration: none;
+  display: block;
+}
+
+.logo img {
+  width: 33%;
+  min-width: 240px;
+}
+
+.centred {
+  margin: 0 auto;
+}

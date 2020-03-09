@@ -1,0 +1,18 @@
+footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.widget{
+    height: 25px;
+    margin: 20px;
+}
+
+.developer a, .developer p{
+    color: #929292;
+    font-family: monospace;
+    font-size: smaller;
+}

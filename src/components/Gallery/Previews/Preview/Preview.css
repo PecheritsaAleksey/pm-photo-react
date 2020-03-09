@@ -1,0 +1,31 @@
+.row {
+  margin-top: 50px;
+}
+.container {
+  max-width: 1200px;
+  padding: 20px;
+  min-height: 100%;
+  margin: 0 auto -50px;
+}
+
+.names {
+  text-align: center;
+  margin-top: 20px;
+  color: #7d7f82;
+}
+
+.preview-link:hover {
+  text-decoration: none;
+  color: #7d7f82;
+}
+
+.preview-link img {
+  transition: 1s ease;
+}
+
+.preview-link img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 1s ease;
+}
