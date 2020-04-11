@@ -13,17 +13,17 @@ export const loadImages = folder => {
     const sixthImages = importAll(require.context("./images/sixth", false));
 
   switch (folder) {
-    case "balet":
+    case "AandY":
       return firstImages;
-    case "VandD":
-      return secondImages;
     case "DandM":
+      return secondImages;
+    case "EandS":
       return thirdImages;
-    case "TandS":
+    case "PandS":
       return fourthImages;
-    case "AandV":
+    case "SandA":
       return fifthImages;
-    case "OandE":
+    case "VandD":
       return sixthImages;
     default:
       break;

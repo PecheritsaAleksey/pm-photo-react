@@ -1,0 +1,18 @@
+.container {
+    padding: 20px;
+    min-height: 100%;
+    margin: 0 auto -50px;
+  }
+
+@media (min-width: 1200px) {
+  .previews {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 2400px) {
+  .previews {
+    max-width: 1600px;
+  }
+}
+

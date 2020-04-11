@@ -1,0 +1,14 @@
+.about-image {
+  margin-right: 85px;
+}
+
+.about.container{
+    padding: 0;
+    padding-bottom: 80px;
+    min-height: 65vh;
+}
+
+.about .text{
+    font-size: 1.2rem;
+}
+

@@ -11,8 +11,12 @@ footer{
     margin: 20px;
 }
 
+.developer{
+    margin-top: 50px;
+}
+
 .developer a, .developer p{
     color: #929292;
-    font-family: monospace;
-    font-size: smaller;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
 }

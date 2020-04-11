@@ -1,12 +1,6 @@
 .row {
   margin-top: 50px;
 }
-.container {
-  max-width: 1200px;
-  padding: 20px;
-  min-height: 100%;
-  margin: 0 auto -50px;
-}
 
 .names {
   text-align: center;
