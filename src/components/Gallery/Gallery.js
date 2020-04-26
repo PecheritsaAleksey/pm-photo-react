@@ -1,45 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
-  LazyLoadImage,
-  trackWindowScroll
+    LazyLoadImage,
+    trackWindowScroll,
 } from "react-lazy-load-image-component";
 import ScrollUpButton from "react-scroll-up-button";
-
-import { loadImages } from "../../utils";
+import { storage } from "firebase";
 
 import "./Gallery.css";
 
-const Gallery = props => {
-  const folder = `${props.location.pathname.substr(1)}`;
+const Gallery = (props) => {
+    const [storageRef, setStorageRef] = useState([]);
+    const [images, setImages] = useState([]);
 
-  const { scrollPosition } = props;
+    useEffect(() => {
+        const storageRef = storage().ref(`${props.location.state.folderPath}`);
 
-  console.log(folder);
+        storageRef.listAll().then((result) => {
+            setStorageRef(result.items);
+        });
+    }, [props.location.state.folderPath]);
 
-  const imagesPath = loadImages(folder);
+    useEffect(() => {
+        let promiseArr = storageRef.map(function (imageRef) {
+            return imageRef.getDownloadURL().then(function (res) {
+                return res;
+            });
+        });
 
-  const images = imagesPath.map(path => (
-    <LazyLoadImage
-      className="image"
-      effect="blur"
-      key={path}
-      scrollPosition={scrollPosition}
-      src={path}
-      width={1300}
-      height={1300}
-    />
-  ));
+        Promise.all(promiseArr).then(function (res) {
+            const { scrollPosition } = props;
+            const images = res.map((path) => (
+                <LazyLoadImage
+                    className="image"
+                    effect="blur"
+                    key={path}
+                    scrollPosition={scrollPosition}
+                    src={path}
+                    width={1300}
+                    height={1300}
+                />
+            ));
+            setImages(images);
+        });
+    }, [storageRef, props]);
 
-  window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
 
-  return (
-    <div>
-      {images}
-      <div>
-        <ScrollUpButton />
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            {images}
+            <div>
+                <ScrollUpButton />
+            </div>
+        </div>
+    );
 };
 
 export default trackWindowScroll(Gallery);

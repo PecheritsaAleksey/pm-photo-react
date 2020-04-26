@@ -6,7 +6,7 @@ import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 const Home = () => {
   return (
     <Auxiliary>
-      <Image src={require("../../images/5rpQb7wPCgQ.jpg")} fluid/>
+      <Image src={require("../../static/5rpQb7wPCgQ.jpg")} fluid/>
       <Previews />
     </Auxiliary>
   );

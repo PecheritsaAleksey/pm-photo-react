@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route path="/about" component={About} />
           <Route path="/price" component={Price} />
-          <Route path="/(AandY|DandM|EandS|PandS|SandA|VandD)" component={Gallery} />
+          <Route path="/wedding/:name" component={Gallery} />
           <Route path="/" exact component={Home} />
         </Switch>
       </Layout>
