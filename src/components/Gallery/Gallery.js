@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import {
     LazyLoadImage,
     trackWindowScroll,
@@ -13,35 +14,44 @@ const Gallery = (props) => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        const storageRef = storage().ref(`${props.location.state.folderPath}`);
+        if (props.location.state) {
 
-        storageRef.listAll().then((result) => {
-            setStorageRef(result.items);
-        });
-    }, [props.location.state.folderPath]);
+            const storageRef = storage().ref(
+                `${props.location.state.folderPath}`
+            );
+
+            storageRef.listAll().then((result) => {
+                setStorageRef(result.items);
+            });
+        }
+    }, [props.location.state]);
 
     useEffect(() => {
-        let promiseArr = storageRef.map(function (imageRef) {
-            return imageRef.getDownloadURL().then(function (res) {
-                return res;
+        if (props.location.state) {
+            let promiseArr = storageRef.map(function (imageRef) {
+                return imageRef.getDownloadURL().then(function (res) {
+                    return res;
+                });
             });
-        });
 
-        Promise.all(promiseArr).then(function (res) {
-            const { scrollPosition } = props;
-            const images = res.map((path) => (
-                <LazyLoadImage
-                    className="image"
-                    effect="blur"
-                    key={path}
-                    scrollPosition={scrollPosition}
-                    src={path}
-                    width={1300}
-                    height={1300}
-                />
-            ));
-            setImages(images);
-        });
+            Promise.all(promiseArr).then(function (res) {
+                const { scrollPosition } = props;
+                const images = res.map((path) => (
+                    <LazyLoadImage
+                        className="image"
+                        effect="blur"
+                        key={path}
+                        scrollPosition={scrollPosition}
+                        src={path}
+                        width={1300}
+                        height={1300}
+                    />
+                ));
+                setImages(images);
+            });
+        } else {
+            setImages(<Redirect to="/" />);
+        }
     }, [storageRef, props]);
 
     window.scrollTo(0, 0);
