@@ -5,7 +5,7 @@ import {
     trackWindowScroll,
 } from "react-lazy-load-image-component";
 import ScrollUpButton from "react-scroll-up-button";
-import { storage } from "firebase";
+import firebaseApp from "../../firebaseApp";
 
 import "./Gallery.css";
 
@@ -15,8 +15,7 @@ const Gallery = (props) => {
 
     useEffect(() => {
         if (props.location.state) {
-
-            const storageRef = storage().ref(
+            const storageRef = firebaseApp.storage().ref(
                 `${props.location.state.folderPath}`
             );
 

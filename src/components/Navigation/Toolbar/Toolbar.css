@@ -5,6 +5,7 @@
   align-self: center;
   text-decoration: none;
   display: block;
+  margin-bottom: -10px;
 }
 
 .logo img {
