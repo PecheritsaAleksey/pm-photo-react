@@ -2,11 +2,5 @@
   max-width: 85%;
   display: block;
   margin: 15px auto;
-  width: auto;
   height: auto;
-}
-
-.lazy-load-image-background{
-  width: 100% !important;
-  height: auto !important;
 }
