@@ -18,7 +18,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="developer">
-          <p>Site by <a href="https://vk.com/fromzeya">Aleksey Pecheritsa</a></p>
+          <p>Site by <a href="https://www.instagram.com/pecheritsa_alex/">Aleksey Pecheritsa</a></p>
       </div>
     </footer>
   );
