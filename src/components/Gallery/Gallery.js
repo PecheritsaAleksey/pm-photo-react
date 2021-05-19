@@ -31,7 +31,6 @@ const Gallery = (props) => {
       const { scrollPosition } = props;
       const images = imageUrlList.map((url) => (
         <LazyLoadImage
-          className="image"
           key={url}
           scrollPosition={scrollPosition}
           src={url}
@@ -48,7 +47,7 @@ const Gallery = (props) => {
   window.scrollTo(0, 0);
 
   return (
-    <div>
+    <div className="images">
       {images}
       <div>
         <ScrollUpButton />
